@@ -19,7 +19,10 @@ public function __construct($db) {
 	$this->conn = $db;
 }
 
-function read_1 ($id,$fdate,$sdate) {
+function read_1 ($id,$fdate,$sdate,$ssets) {
+  $splited = split(",",$ssets);
+  $param1 = $splited[0];
+  $param2 = $splited[1]; 
     if($id != ""){
 $query = 'SELECT
              products.id as id,orders.id as order_id, products.product_code as product_code, products.product_name as product_name, products.category as category, products.standard_cost as standard_cost, orders.order_date as order_date

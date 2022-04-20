@@ -10,7 +10,7 @@ include_once '../objects/order.php';
 $idd = $_GET['id'];
 $first_date = $_GET['begin'];
 $second_date = $_GET['end'];
-
+$sort_setts = $_GET['sort'];
 if($first_date == "" || $second_date == ""){
     echo "Введите период";
     return;
@@ -21,7 +21,7 @@ $db = $database->getConnection();
 
 $order = new Order($db);
 
-$stmt = $order->read_1($idd,$first_date,$second_date);
+$stmt = $order->read_1($idd,$first_date,$second_date,$sort_setts);
 $num = $stmt->rowCount();
 if ($num>0) {
 	$orders_arr=array();
